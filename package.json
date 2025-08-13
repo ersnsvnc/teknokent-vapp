@@ -1,0 +1,50 @@
+{
+  "name": "vuicore-nextjs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "dev:turbo": "next dev --turbopack",
+    "dev:mock": "cross-env NEXT_PUBLIC_API_BASE_URL=http://localhost:3000/api/mock next dev",
+    "build": "next build",
+    "start": "next start",
+    "prepare": "husky",
+    "format": "prettier --write .",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "i18next": "^25.0.1",
+    "i18next-browser-languagedetector": "^8.0.5",
+    "i18next-fs-backend": "^2.6.0",
+    "i18next-http-backend": "^3.0.2",
+    "next": "15.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-i18next": "^15.5.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/i18next": "^13.0.0",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/react-i18next": "^8.1.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^9.24.0",
+    "eslint-config-next": "15.3.0",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-prettier": "^5.2.6",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.1",
+    "prettier": "^3.5.3",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
+}
