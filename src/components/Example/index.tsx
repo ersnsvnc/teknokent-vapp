@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { getExample } from '@/services/exampleService';
 import type { Example } from '@/types/api/example';
 
-export default function Example() {
+export default function ExampleComponent() {
   const [users, setUsers] = useState<Example[]>([]);
   const [error, setError] = useState('');
 
