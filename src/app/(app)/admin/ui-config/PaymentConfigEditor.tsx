@@ -79,20 +79,14 @@ const PaymentConfigEditor = ({ initialConfig, onChange }: Props) => {
   return (
     <Card title="Ödeme Formu Oluşturucu">
       <p className="mb-4 text-sm text-slate-600">
-        Ödeme formunda yer alacak alanları seçin.
-        Sağ tarafta canlı önizlemeyi görebilirsiniz.
+        Ödeme formunda yer alacak alanları seçin. Sağ tarafta canlı önizlemeyi görebilirsiniz.
       </p>
 
       {/* Zorunlu Alanlar */}
       <div>
         <div className="mb-2 font-medium">Zorunlu Alanlar</div>
         <div className="flex flex-wrap gap-2">
-          {[
-            'Kart Sahibi',
-            'Kart Numarası',
-            'Son Kullanma Tarihi',
-            'CVV',
-          ].map((label) => (
+          {['Kart Sahibi', 'Kart Numarası', 'Son Kullanma Tarihi', 'CVV'].map((label) => (
             <span
               key={label}
               className="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-700"
@@ -114,14 +108,9 @@ const PaymentConfigEditor = ({ initialConfig, onChange }: Props) => {
           <div className="flex items-center justify-between">
             <div>
               <div className="font-medium">Toplam Tutar</div>
-              <div className="text-xs text-slate-500">
-                Kullanıcıdan ödeme tutarını al
-              </div>
+              <div className="text-xs text-slate-500">Kullanıcıdan ödeme tutarını al</div>
             </div>
-            <Switch
-              checked={config.amount.enabled}
-              onChange={toggleAmount}
-            />
+            <Switch checked={config.amount.enabled} onChange={toggleAmount} />
           </div>
         </div>
 
@@ -130,14 +119,9 @@ const PaymentConfigEditor = ({ initialConfig, onChange }: Props) => {
           <div className="flex items-center justify-between">
             <div>
               <div className="font-medium">Taksit</div>
-              <div className="text-xs text-slate-500">
-                Kullanıcıya taksit seçeneği sun
-              </div>
+              <div className="text-xs text-slate-500">Kullanıcıya taksit seçeneği sun</div>
             </div>
-            <Switch
-              checked={config.installments.enabled}
-              onChange={toggleInstallments}
-            />
+            <Switch checked={config.installments.enabled} onChange={toggleInstallments} />
           </div>
 
           {config.installments.enabled && (
@@ -158,12 +142,7 @@ const PaymentConfigEditor = ({ initialConfig, onChange }: Props) => {
 
       {/* Footer */}
       <div className="sticky bottom-0 mt-6 flex justify-end border-t bg-white pt-4">
-        <Button
-          type="primary"
-          size="large"
-          loading={saving}
-          onClick={handleSave}
-        >
+        <Button type="primary" size="large" loading={saving} onClick={handleSave}>
           Değişiklikleri Kaydet
         </Button>
       </div>

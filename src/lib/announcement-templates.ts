@@ -1,7 +1,7 @@
-import type { AnnouncementTemplateId } from '@/types/ui-config';
+import type { AnnouncementTemplate } from '@/types/ui-config';
 
 export const ANNOUNCEMENT_TEMPLATES: Array<{
-  id: AnnouncementTemplateId;
+  id: AnnouncementTemplate;
   title: string;
   description: string;
 }> = [
@@ -11,12 +11,12 @@ export const ANNOUNCEMENT_TEMPLATES: Array<{
     description: 'Planlı kesinti / bakım bilgilendirmesi.',
   },
   {
-    id: 'campaign',
+    id: 'banner',
     title: 'Kampanya Duyurusu',
     description: 'CTA butonlu kampanya / yönlendirme.',
   },
   {
-    id: 'info',
+    id: 'simple',
     title: 'Bilgilendirme',
     description: 'Genel bilgilendirme / duyuru.',
   },

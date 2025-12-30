@@ -49,7 +49,7 @@ const amountValidator = (_: Rule, value: number | null) => {
     return Promise.reject(new Error('Tutar zorunludur.'));
   }
   if (Number.isNaN(value) || value <= 0) {
-    return Promise.reject(new Error('Tutar 0\'dan büyük olmalıdır.'));
+    return Promise.reject(new Error("Tutar 0'dan büyük olmalıdır."));
   }
   return Promise.resolve();
 };
@@ -62,18 +62,10 @@ export const cardHolderRules: Rule[] = [
   },
 ];
 
-export const cardNumberRules: Rule[] = [
-  { validator: cardNumberValidator },
-];
+export const cardNumberRules: Rule[] = [{ validator: cardNumberValidator }];
 
-export const expiryRules: Rule[] = [
-  { validator: expiryValidator },
-];
+export const expiryRules: Rule[] = [{ validator: expiryValidator }];
 
-export const cvvRules: Rule[] = [
-  { validator: cvvValidator },
-];
+export const cvvRules: Rule[] = [{ validator: cvvValidator }];
 
-export const amountRules: Rule[] = [
-  { validator: amountValidator },
-];
+export const amountRules: Rule[] = [{ validator: amountValidator }];

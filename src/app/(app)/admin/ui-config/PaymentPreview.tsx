@@ -27,11 +27,7 @@ const PaymentPreview = ({ config }: Props) => {
             label="Kart Numarası"
             rules={config.cardNumber.required ? [{ required: true }] : []}
           >
-            <Input
-              size="large"
-              disabled
-              placeholder="**** **** **** ****"
-            />
+            <Input size="large" disabled placeholder="**** **** **** ****" />
           </Form.Item>
         )}
 
@@ -40,24 +36,13 @@ const PaymentPreview = ({ config }: Props) => {
             label="Son Kullanma Tarihi"
             rules={config.expiry.required ? [{ required: true }] : []}
           >
-            <Input
-              size="large"
-              disabled
-              placeholder="MM / YY"
-            />
+            <Input size="large" disabled placeholder="MM / YY" />
           </Form.Item>
         )}
 
         {config.cvv.enabled && (
-          <Form.Item
-            label="CVV"
-            rules={config.cvv.required ? [{ required: true }] : []}
-          >
-            <Input
-              size="large"
-              disabled
-              placeholder="***"
-            />
+          <Form.Item label="CVV" rules={config.cvv.required ? [{ required: true }] : []}>
+            <Input size="large" disabled placeholder="***" />
           </Form.Item>
         )}
 
@@ -66,13 +51,7 @@ const PaymentPreview = ({ config }: Props) => {
             label="Toplam Tutar"
             rules={config.amount.required ? [{ required: true }] : []}
           >
-            <InputNumber
-              size="large"
-              disabled
-              className="w-full"
-              prefix="₺"
-              placeholder="0,00"
-            />
+            <InputNumber size="large" disabled className="w-full" prefix="₺" placeholder="0,00" />
           </Form.Item>
         )}
 
@@ -90,12 +69,7 @@ const PaymentPreview = ({ config }: Props) => {
           </Form.Item>
         )}
 
-        <Button
-          type="primary"
-          size="large"
-          disabled
-          className="mt-2 w-full"
-        >
+        <Button type="primary" size="large" disabled className="mt-2 w-full">
           Ödeme Yap
         </Button>
       </Form>

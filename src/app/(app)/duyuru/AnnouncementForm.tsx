@@ -78,7 +78,9 @@ const AnnouncementForm = ({ config, onCreate }: Props) => {
         <Form.Item
           label="Açıklama"
           name="description"
-          rules={config.description.required ? [{ required: true, message: 'Açıklama zorunlu.' }] : []}
+          rules={
+            config.description.required ? [{ required: true, message: 'Açıklama zorunlu.' }] : []
+          }
         >
           <Input.TextArea rows={4} placeholder="Duyuru metni..." />
         </Form.Item>
@@ -88,7 +90,11 @@ const AnnouncementForm = ({ config, onCreate }: Props) => {
         <Form.Item
           label="Yayın Tarihi"
           name="publishDate"
-          rules={config.publishDate.required ? [{ required: true, message: 'Yayın tarihi zorunlu.' }] : []}
+          rules={
+            config.publishDate.required
+              ? [{ required: true, message: 'Yayın tarihi zorunlu.' }]
+              : []
+          }
         >
           <DatePicker className="w-full" size="large" />
         </Form.Item>

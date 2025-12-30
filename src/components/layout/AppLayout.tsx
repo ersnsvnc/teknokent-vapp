@@ -7,7 +7,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { MenuOutlined } from '@ant-design/icons';
 
-
 const { Header, Sider, Content } = Layout;
 const { useBreakpoint } = Grid;
 
@@ -60,34 +59,34 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
       ) : null}
       <Layout>
         <Header className="flex items-center justify-between bg-[#021528] px-4 shadow-md">
-  <div className="text-lg font-semibold text-white">Vapp</div>
+          <div className="text-lg font-semibold text-white">Vapp</div>
 
-  {!isDesktop && (
-    <>
-      <button
-        type="button"
-        onClick={() => setMobileMenuOpen(true)}
-        className="flex h-10 w-10 items-center justify-center rounded-md hover:bg-white/10 active:scale-95"
-      >
-        <MenuOutlined style={{ fontSize: 22, color: '#ffffff' }} />
-      </button>
+          {!isDesktop && (
+            <>
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(true)}
+                className="flex h-10 w-10 items-center justify-center rounded-md hover:bg-white/10 active:scale-95"
+              >
+                <MenuOutlined style={{ fontSize: 22, color: '#ffffff' }} />
+              </button>
 
-      <Drawer
-        open={mobileMenuOpen}
-        placement="left"
-        onClose={() => setMobileMenuOpen(false)}
-        width={260}
-      >
-        <Menu
-          mode="inline"
-          selectedKeys={selectedKey ? [selectedKey] : []}
-          items={items}
-          onClick={handleMenuClick}
-        />
-      </Drawer>
-    </>
-  )}
-</Header>
+              <Drawer
+                open={mobileMenuOpen}
+                placement="left"
+                onClose={() => setMobileMenuOpen(false)}
+                width={260}
+              >
+                <Menu
+                  mode="inline"
+                  selectedKeys={selectedKey ? [selectedKey] : []}
+                  items={items}
+                  onClick={handleMenuClick}
+                />
+              </Drawer>
+            </>
+          )}
+        </Header>
 
         <Content className="p-4 md:p-6">
           <div className="mx-auto max-w-6xl rounded-lg bg-white p-4 shadow-sm md:p-6">

@@ -1,14 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import {
-  Form,
-  Input,
-  InputNumber,
-  Button,
-  Select,
-  Spin,
-} from 'antd';
+import { Form, Input, InputNumber, Button, Select, Spin } from 'antd';
 import type { PaymentUIConfig } from '@/types/ui-config';
 import { notify } from '@/utils/notify';
 
@@ -80,11 +73,7 @@ const OdemePage = () => {
         )}
 
         {config.cvv.enabled && (
-          <Form.Item
-            label="CVV"
-            name="cvv"
-            rules={config.cvv.required ? [{ required: true }] : []}
-          >
+          <Form.Item label="CVV" name="cvv" rules={config.cvv.required ? [{ required: true }] : []}>
             <Input size="large" placeholder="***" />
           </Form.Item>
         )}
@@ -95,12 +84,7 @@ const OdemePage = () => {
             name="amount"
             rules={config.amount.required ? [{ required: true }] : []}
           >
-            <InputNumber
-              size="large"
-              className="w-full"
-              prefix="₺"
-              placeholder="0,00"
-            />
+            <InputNumber size="large" className="w-full" prefix="₺" placeholder="0,00" />
           </Form.Item>
         )}
 

@@ -2,10 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Spin, Tabs } from 'antd';
-import type {
-  PaymentUIConfig,
-  AnnouncementUIConfig,
-} from '@/types/ui-config';
+import type { PaymentUIConfig, AnnouncementUIConfig } from '@/types/ui-config';
 import PaymentConfigEditor from './PaymentConfigEditor';
 import PaymentPreview from './PaymentPreview';
 import AnnouncementConfigEditor from './AnnouncementConfigEditor';
@@ -13,8 +10,7 @@ import AnnouncementPreview from './AnnouncementPreview';
 
 const UIConfigPage = () => {
   const [paymentConfig, setPaymentConfig] = useState<PaymentUIConfig | null>(null);
-  const [announcementConfig, setAnnouncementConfig] =
-    useState<AnnouncementUIConfig | null>(null);
+  const [announcementConfig, setAnnouncementConfig] = useState<AnnouncementUIConfig | null>(null);
 
   useEffect(() => {
     fetch('/api/ui-config')
@@ -41,10 +37,7 @@ const UIConfigPage = () => {
           label: 'Ödeme UI',
           children: (
             <div className="grid gap-6 md:grid-cols-2">
-              <PaymentConfigEditor
-                initialConfig={paymentConfig}
-                onChange={setPaymentConfig}
-              />
+              <PaymentConfigEditor initialConfig={paymentConfig} onChange={setPaymentConfig} />
               <PaymentPreview config={paymentConfig} />
             </div>
           ),

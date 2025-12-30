@@ -1,7 +1,7 @@
 'use client';
 
 import { Card, Button, Checkbox, Divider, Segmented, Switch, Typography, Space } from 'antd';
-import { useMemo, useState } from 'react';
+import {useState } from 'react';
 import type { AnnouncementTemplate, AnnouncementUIConfig } from '@/types/ui-config';
 import { notify } from '@/utils/notify';
 
@@ -13,9 +13,9 @@ type Props = {
 };
 
 const TEMPLATE_OPTIONS = [
-  { label: "Simple", value: "simple" },
-  { label: "Banner", value: "banner" },
-  { label: "Maintenance", value: "maintenance" },
+  { label: 'Simple', value: 'simple' },
+  { label: 'Banner', value: 'banner' },
+  { label: 'Maintenance', value: 'maintenance' },
 ] as const;
 
 const fieldMeta: Array<{
@@ -40,38 +40,6 @@ export default function AnnouncementConfigEditor({ initialConfig, onChange }: Pr
     onChange(next);
   };
 
-  const setTemplate = (template: AnnouncementTemplate) => {
-    // Template’e göre küçük “akıllı” defaultlar (basit tutuyoruz)
-    if (template === 'banner') {
-      update({
-        ...config,
-        template,
-        ctaText: { enabled: true, required: false },
-        ctaUrl: { enabled: true, required: false },
-      });
-      return;
-    }
-
-    if (template === 'maintenance') {
-      update({
-        ...config,
-        template,
-        publishDate: { enabled: true, required: false },
-        ctaText: { enabled: false, required: false },
-        ctaUrl: { enabled: false, required: false },
-      });
-      return;
-    }
-
-    // simple
-    update({
-      ...config,
-      template,
-      ctaText: { enabled: false, required: false },
-      ctaUrl: { enabled: false, required: false },
-      publishDate: { enabled: false, required: false },
-    });
-  };
 
   const toggleEnabled = (key: keyof Omit<AnnouncementUIConfig, 'template'>, enabled: boolean) => {
     update({
@@ -92,9 +60,6 @@ export default function AnnouncementConfigEditor({ initialConfig, onChange }: Pr
       },
     });
   };
-
-  const canShowRequired = (key: keyof Omit<AnnouncementUIConfig, 'template'>) =>
-    key === 'title' || key === 'description';
 
   const handleSave = async () => {
     setSaving(true);
@@ -127,13 +92,13 @@ export default function AnnouncementConfigEditor({ initialConfig, onChange }: Pr
             </Text>
           </div>
 
-    <Segmented
-  block
-  size="large"
-  value={config.template}
-  options={TEMPLATE_OPTIONS as any}
-  onChange={(value) => update({ ...config, template: value as any })}
-/>
+          <Segmented
+            block
+            size="large"
+            value={config.template}
+            options={TEMPLATE_OPTIONS as any}
+            onChange={(value) => update({ ...config, template: value as any })}
+          />
         </div>
 
         <Divider className="my-2" />

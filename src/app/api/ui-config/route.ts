@@ -1,10 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { AnnouncementUIConfig, PaymentUIConfig } from '@/types/ui-config';
-import {
-  getUIConfig,
-  setAnnouncementConfig,
-  setPaymentConfig,
-} from '@/lib/ui-config-store';
+import { getUIConfig, setAnnouncementConfig, setPaymentConfig } from '@/lib/ui-config-store';
 
 type UpdateBody =
   | { target: 'payment'; config: PaymentUIConfig }

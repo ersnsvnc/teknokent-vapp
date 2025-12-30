@@ -19,21 +19,19 @@ const createDefaultStore = (): UIConfigStore => ({
     amount: { enabled: false, required: false },
     installments: { enabled: false, required: false, options: [2, 3, 6, 9] },
   },
-announcement: {
-  template: 'banner',
+  announcement: {
+    template: 'banner',
 
-  title: { enabled: true, required: true },
-  description: { enabled: true, required: true },
+    title: { enabled: true, required: true },
+    description: { enabled: true, required: true },
 
-  ctaText: { enabled: true, required: false },
-  ctaUrl: { enabled: true, required: false },
+    ctaText: { enabled: true, required: false },
+    ctaUrl: { enabled: true, required: false },
 
-  publishDate: { enabled: false, required: false },
+    publishDate: { enabled: false, required: false },
 
-  items: { enabled: false, required: false },
-},
-
-
+    items: { enabled: false, required: false },
+  },
 });
 
 const getTenantStore = (tenant?: string) => {
@@ -55,7 +53,7 @@ export const setPaymentConfig = (tenant: string | undefined, payment: PaymentUIC
 
 export const setAnnouncementConfig = (
   tenant: string | undefined,
-  announcement: AnnouncementUIConfig,
+  announcement: AnnouncementUIConfig
 ): void => {
   const store = getTenantStore(tenant);
   tenantStores.set(tenant ?? defaultTenant, { ...store, announcement });

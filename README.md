@@ -10,6 +10,7 @@ Supports **SSR**, **CSR**, and **RSC** translation flows with hydration-safe arc
 ✅ Built with **Next.js App Router**  
 ✅ CLI-based setup (`setupI18n`, optional design system, backend toggle)  
 ✅ Full **i18n** support:
+
 - Server Side Rendering (SSR)
 - React Server Components (RSC)
 - Client Side Rendering (CSR)
@@ -60,11 +61,11 @@ If i18n is selected via CLI:
 - `document.documentElement.lang` is set safely via React client
 
 Supports both:
+
 - `/public/locales/**` → for CSR via `i18next-http-backend`
 - `/src/locales/**` → for SSR / RSC via `i18next-fs-backend`
 
 Middleware is also set to redirect unknown routes to preferred locale based on `Accept-Language`.
-
 
 ## 🌐 Internationalization (i18n) Usage
 
@@ -130,7 +131,13 @@ The boilerplate uses a `<LocaleBootstrap />` client component to ensure the HTML
 // app/[locale]/layout.tsx
 import { LocaleBootstrap } from '@/components/LocaleBootstrap';
 
-export default function LocaleLayout({ children, params }: { children: React.ReactNode; params: { locale: string } }) {
+export default function LocaleLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: { locale: string };
+}) {
   const { locale } = params;
 
   return (
@@ -148,11 +155,11 @@ export default function LocaleLayout({ children, params }: { children: React.Rea
 
 ### 🧪 Hydration Safe Strategy
 
-| Case       | Strategy                                 |
-|------------|------------------------------------------|
-| SSR/RSC    | `serverInit(locale)` + `getFixedT()`     |
-| CSR        | `useTranslation()` inside `<I18nReady>`  |
-| HTML `<lang>` | `LocaleBootstrap` sets it on mount   |
+| Case          | Strategy                                |
+| ------------- | --------------------------------------- |
+| SSR/RSC       | `serverInit(locale)` + `getFixedT()`    |
+| CSR           | `useTranslation()` inside `<I18nReady>` |
+| HTML `<lang>` | `LocaleBootstrap` sets it on mount      |
 
 ---
 
@@ -225,10 +232,10 @@ vuicore-nextjs/
 
 ## 🔭 Roadmap
 
-- [ ] ✅ Phase 3: Tailwind / SCSS toggle support via CLI  
-- [ ] 🔒 Optional Role-based Auth integration  
-- [ ] 🧪 Unit test CLI templates + Husky + pre-push  
-- [ ] ⚙️ Fully customizable design system integration  
+- [ ] ✅ Phase 3: Tailwind / SCSS toggle support via CLI
+- [ ] 🔒 Optional Role-based Auth integration
+- [ ] 🧪 Unit test CLI templates + Husky + pre-push
+- [ ] ⚙️ Fully customizable design system integration
 - [ ] 📦 Publish internal npm CLI tool (`npx create-vuicore-nextjs`)
 
 ---

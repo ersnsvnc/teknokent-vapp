@@ -40,7 +40,7 @@ const AnnouncementList = ({ items, config }: Props) => {
                 target={showCtaUrl ? '_blank' : undefined}
                 disabled={showCtaUrl && !item.ctaUrl}
               >
-                {showCtaText ? item.ctaText ?? 'Detay' : 'Detay'}
+                {showCtaText ? (item.ctaText ?? 'Detay') : 'Detay'}
               </Button>
             </div>
           ) : null}

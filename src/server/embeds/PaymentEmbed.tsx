@@ -16,9 +16,7 @@ const PaymentEmbed = ({ config }: Props) => {
       <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
         <div className="mb-4">
           <h2 className="text-lg font-semibold text-slate-900">Ödeme</h2>
-          <p className="mt-1 text-sm text-slate-500">
-            Bu form UI config ile dinamikleşir (embed).
-          </p>
+          <p className="mt-1 text-sm text-slate-500">Bu form UI config ile dinamikleşir (embed).</p>
         </div>
 
         <form className="space-y-4">
@@ -106,9 +104,7 @@ const PaymentEmbed = ({ config }: Props) => {
               </select>
 
               <div className="pointer-events-none relative -mt-11 h-11 w-full">
-                <div className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
-                  ▾
-                </div>
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">▾</div>
               </div>
             </div>
           )}
@@ -120,9 +116,7 @@ const PaymentEmbed = ({ config }: Props) => {
             Ödeme Yap
           </button>
 
-          <p className="pt-1 text-xs text-slate-400">
-            * Bu bir prototip embed’idir (mock).
-          </p>
+          <p className="pt-1 text-xs text-slate-400">* Bu bir prototip embed’idir (mock).</p>
         </form>
       </div>
     </div>

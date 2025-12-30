@@ -23,7 +23,7 @@ const AnnouncementEmbed = ({ config }: Props) => {
   const showCTA = config.ctaText.enabled && config.ctaUrl.enabled;
 
   if (config.template === 'banner') {
-     return (
+    return (
       <div className="rounded-xl border color-white bg-white p-4 shadow-sm">
         <div className="rounded-xl border bg-slate-900 p-4 text-white">
           <div className="mb-2 flex items-center justify-between">
@@ -33,14 +33,16 @@ const AnnouncementEmbed = ({ config }: Props) => {
             ) : null}
           </div>
 
-          {config.title.enabled ? <div className="text-lg text-white font-semibold">{Title}</div> : null}
+          {config.title.enabled ? (
+            <div className="text-lg text-white font-semibold">{Title}</div>
+          ) : null}
           {config.description.enabled ? (
             <div className="mt-2 text-sm text-white/80">{Desc}</div>
           ) : null}
 
           {showCTA ? (
             <div className="mt-4">
-              <button className='p-2 border rounded-xl'>Hemen İncele</button>
+              <button className="p-2 border rounded-xl">Hemen İncele</button>
             </div>
           ) : null}
         </div>
