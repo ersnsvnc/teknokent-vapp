@@ -1,38 +1,40 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Form, Input, InputNumber, Button, notification, Spin } from 'antd';
+import {
+  Form,
+  Input,
+  InputNumber,
+  Button,
+  Select,
+  Spin,
+} from 'antd';
 import type { PaymentUIConfig } from '@/types/ui-config';
 import { notify } from '@/utils/notify';
 
-type PaymentFormValues = {
-  cardHolder?: string;
-  cardNumber?: string;
-  expiry?: string;
-  cvv?: string;
-  amount?: number;
-};
-
 const OdemePage = () => {
   const [config, setConfig] = useState<PaymentUIConfig | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
     fetch('/api/ui-config')
       .then((res) => res.json())
       .then((data) => setConfig(data.payment))
       .finally(() => setLoading(false));
   }, []);
 
-const handleSubmit = async () => {
-  setSubmitting(true);
-  await new Promise((r) => setTimeout(r, 1200));
-  notify('success', 'Ödeme başarılı (mock)');
-  setSubmitting(false);
-};
-
+  const handleSubmit = async () => {
+    setSubmitting(true);
+    try {
+      await new Promise((r) => setTimeout(r, 1000));
+      notify('success', 'Ödeme başarılı (mock)');
+    } catch {
+      notify('error', 'Ödeme başarısız (mock)');
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   if (loading || !config) {
     return (
@@ -53,7 +55,7 @@ const handleSubmit = async () => {
             name="cardHolder"
             rules={config.cardHolder.required ? [{ required: true }] : []}
           >
-            <Input size="large" />
+            <Input size="large" placeholder="Ad Soyad" />
           </Form.Item>
         )}
 
@@ -63,7 +65,27 @@ const handleSubmit = async () => {
             name="cardNumber"
             rules={config.cardNumber.required ? [{ required: true }] : []}
           >
-            <Input size="large" />
+            <Input size="large" placeholder="**** **** **** ****" />
+          </Form.Item>
+        )}
+
+        {config.expiry.enabled && (
+          <Form.Item
+            label="Son Kullanma Tarihi"
+            name="expiry"
+            rules={config.expiry.required ? [{ required: true }] : []}
+          >
+            <Input size="large" placeholder="MM / YY" />
+          </Form.Item>
+        )}
+
+        {config.cvv.enabled && (
+          <Form.Item
+            label="CVV"
+            name="cvv"
+            rules={config.cvv.required ? [{ required: true }] : []}
+          >
+            <Input size="large" placeholder="***" />
           </Form.Item>
         )}
 
@@ -73,14 +95,32 @@ const handleSubmit = async () => {
             name="amount"
             rules={config.amount.required ? [{ required: true }] : []}
           >
-            <InputNumber className="w-full" size="large" prefix="₺" />
+            <InputNumber
+              size="large"
+              className="w-full"
+              prefix="₺"
+              placeholder="0,00"
+            />
+          </Form.Item>
+        )}
+
+        {config.installments.enabled && (
+          <Form.Item label="Taksit" name="installments">
+            <Select
+              size="large"
+              placeholder="Taksit seçiniz"
+              options={config.installments.options.map((v) => ({
+                label: `${v} Taksit`,
+                value: v,
+              }))}
+            />
           </Form.Item>
         )}
 
         <Button
           type="primary"
-          htmlType="submit"
           size="large"
+          htmlType="submit"
           loading={submitting}
           className="mt-2 w-full"
         >
